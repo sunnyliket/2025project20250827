@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 경주 여행</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 무료 지도(Leaflet) CSS/JS 추가 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="page-container">
+
+        <!-- 사이드바 (햄버거 메뉴) -->
+        <div id="sideNav" class="sidenav">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+            <a href="attractions.html">🏛️ 명소 목록 보기</a>
+            <a href="random_course.html">🎲 랜덤 코스 추천</a>
+            <a href="favorites.html">⭐ 즐겨찾기</a>
+            <a href="course_planner.html">✏️ 코스 짜기</a>
+            <a href="stamp_tour.html">✅ 스탬프 투어</a>
+            <a href="navigation.html">🗺️ 네비게이션</a>
+            <div class="sidenav-item">
+                <span>🔊 음성안내</span>
+                <label class="switch">
+                    <input type="checkbox" id="voice-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <a href="booking.html">🗓️ 예약하기</a>
+            <a href="quiz.html">🧠 경주 퀴즈</a>
+        </div>
+
+        <!-- 헤더 (제목 부분) -->
+        <div class="header">
+            <span class="hamburger-menu" onclick="openNav()">&#9776;</span>
+            <h1>egg</h1>
+            <div class="help-button-container">
+                <span id="help-btn-open" class="help-button" onclick="openHelpModal()">?</span>
+                <span id="help-btn-close" class="help-button" onclick="closeHelpModal()">&times;</span>
+            </div>
+        </div>
+
+        <!-- ==================== 메인 대시보드 그리드 ==================== -->
+        <div class="dashboard-grid">
+            <!-- 왼쪽 패널 -->
+            <div class="panel left-panel">
+                <div class="tab-header">
+                    <button class="tab-link active" onclick="openTab(event, 'weather-tab')">오늘의 경주</button>
+                </div>
+                <div id="weather-tab" class="tab-content active">
+                    <div id="weather-widget" class="weather-widget">
+                        <div class="widget-top">
+                            <p id="weather-comment">날씨에 맞는 멘트가 여기에 나옵니다.</p>
+                            <p id="current-time" class="current-time">00:00</p>
+                        </div>
+                        <div class="widget-bottom">
+                            <div class="current-weather">
+                                <h4>📍 지금 경주는?</h4>
+                                <div class="temp-and-icon">
+                                    <span id="current-temp" class="current-temp">--°C</span>
+                                    <span id="current-icon" class="current-icon">❓</span>
+                                </div>
+                                <p id="current-condition">날씨 정보 로딩 중...</p>
+                            </div>
+                            <div id="hourly-forecast" class="hourly-forecast">
+                                <!-- JavaScript가 여기에 시간별 날씨를 채웁니다. -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 패널 -->
+            <div class="panel right-panel">
+                <div class="tab-header">
+                    <button class="tab-link active" onclick="openTab(event, 'map-tab')">지도</button>
+                </div>
+                <div id="map-tab" class="tab-content active">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <!-- ======================================================= -->
+
+        <!-- 하단 메뉴 -->
+        <div class="dashboard-menu">
+            <a href="attractions.html" class="menu-button">🏛️ 명소 목록 보기</a>
+            <a href="random_course.html" class="menu-button">🎲 랜덤 코스 추천</a>
+            <a href="favorites.html" class="menu-button">⭐ 즐겨찾기</a>
+        </div>
+        
+    </div>
+
+    <!-- (도움말 팝업은 이전과 동일) -->
+    <div id="helpModal" class="modal"></div>
+
+    <script src="global.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

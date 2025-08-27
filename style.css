@@ -1,0 +1,175 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* 페이지 전체 스크롤 방지 */
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #ffeea9; 
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    background-color: #fff5cc; 
+    color: #5D4037; 
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+/* ==================== 새로운 대시보드 레이아웃 ==================== */
+.dashboard-grid {
+    display: flex;
+    flex-grow: 1; /* 헤더와 하단 메뉴 사이의 모든 공간 차지 */
+    overflow: hidden; /* 내부 스크롤은 각 패널에서 처리 */
+    padding: 20px;
+    gap: 20px;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff5cc;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 400px;
+    flex-shrink: 0; /* 너비 고정 */
+}
+
+.right-panel {
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+}
+
+.tab-header {
+    display: flex;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.tab-link {
+    padding: 12px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8D6E63;
+    transition: all 0.3s;
+}
+
+.tab-link.active {
+    background-color: #fff5cc;
+    color: #5D4037;
+}
+
+.tab-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: block; /* 기본적으로 보이도록 수정 */
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 15px 15px;
+}
+/* =========================================================== */
+
+/* 날씨 위젯 스타일 */
+.weather-widget {
+    width: 100%;
+}
+
+.widget-top {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+}
+
+#weather-comment {
+    font-size: 16px;
+    color: #5D4037;
+    margin: 0 0 10px;
+}
+
+.current-time {
+    font-size: 14px;
+    color: #8D6E63;
+    margin: 0 0 10px;
+}
+
+.widget-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.widget-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.current-weather {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.current-weather h4 { margin: 0 0 10px; font-size: 16px; }
+.temp-and-icon { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px; }
+.current-temp { font-size: 36px; font-weight: bold; }
+.current-icon { font-size: 36px; }
+#current-condition { margin: 0; font-size: 16px; }
+
+.hourly-forecast {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.hourly-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.hourly-item .time { font-size: 14px; font-weight: bold; }
+.hourly-item .icon { font-size: 24px; }
+.hourly-item .temp { font-size: 16px; }
+
+.dashboard-menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffeea9; 
+    padding: 15px 10px;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.menu-button { text-decoration: none; background-color: #FBC02D; color: white; padding: 12px 20px; border-radius: 25px; font-weight: bold; transition: background-color 0.2s; }
+.menu-button:hover { background-color: #F9A225; }
+.hamburger-menu { font-size: 30px; color: #5D4037; cursor: pointer; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
+.sidenav { height: 100%; width: 0; position: fixed; z-index: 20; top: 0; left: 0; background-color: #6D4C41; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
+.sidenav a, .sidenav-item { padding: 10px 15px; text-decoration: none; font-size: 22px; color: #FFFBEB; display: flex; align-items: center; transition: 0.3s; }
+.sidenav a:hover { color: #FBC02D; }
+.sidenav-item { justify-content: space-between; }
+.switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 28px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #28a745; }
+input:checked + .slider:before { transform: translateX(22px); }
